@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  .hero-section {
+    background: linear-gradient(135deg, #e3f2fd, #ffffff);
+    border-radius: 16px;
+    padding: 3rem 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .hero-section:hover {
+    transform: scale(1.01);
+  }
+
+  .hero-heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #0d6efd;
+  }
+
+  .hero-text {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    color: #495057;
+  }
+
+  .cta-buttons a {
+    margin: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 10px;
+  }
+
+  .btn-admission {
+    background-color: #ffffff;
+    color: #0d6efd;
+    border: 2px solid #0d6efd;
+  }
+
+  .btn-apply {
+    background-color: #0d6efd;
+    color: #ffffff;
+    border: 2px solid transparent;
+  }
+
+  .btn-apply:hover,
+  .btn-admission:hover {
+    opacity: 0.9;
+  }
+</style>
+
+<div class="container mt-5">
+  <div class="hero-section">
+    <h1 class="hero-heading"><i class="bi bi-mortarboard-fill"></i> Welcome to Thinkodex</h1>
+    <p class="hero-text">Discover the admission process or begin your application now.</p>
+    <div class="cta-buttons">
+      <a href="{% url 'admissions:admissions_home' %}" class="btn btn-admission">
+        <i class="bi bi-info-circle"></i> View Admissions
+      </a>
+      <a href="{% url 'admissions:apply' %}" class="btn btn-apply">
+        <i class="bi bi-pencil-square"></i> Apply Online
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+{% endblock %}

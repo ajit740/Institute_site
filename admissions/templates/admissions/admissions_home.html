@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+
+{% block content %}
+<style>
+  .admission-hero {
+    background: linear-gradient(135deg, #f0f8ff, #e3f2fd);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .admission-hero:hover {
+    transform: translateY(-5px);
+  }
+
+  .admission-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0d6efd;
+  }
+
+  .admission-text {
+    font-size: 1.25rem;
+    color: #495057;
+  }
+
+  .btn-lg-custom {
+    font-size: 1.1rem;
+    padding: 0.75rem 1.25rem;
+  }
+
+  .icon-left {
+    margin-right: 10px;
+  }
+</style>
+
+<div class="container mt-5">
+  <div class="admission-hero text-center">
+    <h1 class="admission-title mb-3">🎓 Welcome to Thinkodex Admissions</h1>
+    <p class="admission-text mb-4">
+      Begin your educational journey with us — learn about the process or submit your application online in just a few clicks!
+    </p>
+
+    <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+      <a href="{% url 'admissions:admission_process' %}" class="btn btn-outline-primary btn-lg btn-lg-custom">
+        <i class="bi bi-info-circle icon-left"></i> Admission Process
+      </a>
+      <a href="{% url 'admissions:apply' %}" class="btn btn-primary btn-lg btn-lg-custom">
+        <i class="bi bi-pencil-square icon-left"></i> Apply Online
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+
+{% block content %}
+<style>
+  .step-card {
+    background-color: #f9f9f9;
+    border-left: 5px solid #4caf50;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .step-card:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .step-icon {
+    font-size: 24px;
+    margin-right: 10px;
+    color: #4caf50;
+  }
+
+  .admission-header {
+    font-weight: 700;
+    color: #2e7d32;
+    margin-bottom: 1.5rem;
+  }
+
+  .step-number {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+  }
+</style>
+
+<div class="container my-5">
+  <h2 class="admission-header">🎓 Admission Process</h2>
+  <p class="mb-4">Welcome! Follow these steps to apply and start your journey with us:</p>
+
+  <div class="step-card d-flex align-items-start">
+    <div class="step-icon"><i class="bi bi-pencil-square"></i></div>
+    <div>
+      <div class="step-number">Step 1: Fill the Online Application Form</div>
+      <p class="mb-0">Provide your personal, academic, and contact details in the form.</p>
+    </div>
+  </div>
+
+  <div class="step-card d-flex align-items-start">
+    <div class="step-icon"><i class="bi bi-upload"></i></div>
+    <div>
+      <div class="step-number">Step 2: Upload Required Documents</div>
+      <p class="mb-0">Submit necessary documents such as mark sheets, ID proof, and photos.</p>
+    </div>
+  </div>
+
+  <div class="step-card d-flex align-items-start">
+    <div class="step-icon"><i class="bi bi-check-circle"></i></div>
+    <div>
+      <div class="step-number">Step 3: Track Your Application</div>
+      <p class="mb-0">Log in anytime to view your admission status and updates.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

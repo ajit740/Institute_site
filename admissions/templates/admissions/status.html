@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5 mb-5">
+
+  <div class="card shadow-sm p-4 border-0">
+    <h2 class="text-primary mb-4"><i class="bi bi-clipboard-check"></i> Application Status</h2>
+
+    {% if application %}
+      <div class="mb-3">
+        <p><strong>Name:</strong> {{ application.full_name }}</p>
+        <p><strong>Course:</strong> {{ application.applied_course }}</p>
+        <p><strong>Status:</strong> 
+          <span class="badge 
+            {% if application.status == 'Approved' %}
+              bg-success
+            {% elif application.status == 'Pending' %}
+              bg-warning text-dark
+            {% elif application.status == 'Rejected' %}
+              bg-danger
+            {% else %}
+              bg-secondary
+            {% endif %}
+          ">
+            {{ application.status }}
+          </span>
+        </p>
+      </div>
+
+      <div class="alert 
+        {% if application.status == 'Approved' %}
+          alert-success
+        {% elif application.status == 'Pending' %}
+          alert-warning
+        {% elif application.status == 'Rejected' %}
+          alert-danger
+        {% else %}
+          alert-secondary
+        {% endif %}
+      ">
+        {% if application.status == 'Approved' %}
+          🎉 <strong>Next Steps:</strong> Please proceed to the <a href="{% url 'payment_page' %}">payment page</a> to complete your enrollment.
+        {% elif application.status == 'Pending' %}
+          ⏳ <strong>Next Steps:</strong> Your application is under review. You’ll be notified once a decision is made.
+        {% elif application.status == 'Rejected' %}
+          ❌ <strong>Next Steps:</strong> Unfortunately, your application was rejected. <a href="{% url 'contact' %}">Contact us</a> for more information.
+        {% else %}
+          <strong>Note:</strong> No further action available at this time.
+        {% endif %}
+      </div>
+
+    {% else %}
+      <div class="alert alert-info">
+        ℹ️ No application found. Please <a href="{% url 'admissions:apply' %}">apply online</a> first.
+      </div>
+    {% endif %}
+  </div>
+
+</div>
+
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+{% endblock %}

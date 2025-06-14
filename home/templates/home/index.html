@@ -1,0 +1,740 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Animate.css and AOS CSS/JS (make sure to add in base.html or here) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  });
+</script>
+
+<style>
+  /* Floating Animation for Hero heading */
+  .animate__fadeInDown {
+    animation-name: floatUpDown !important;
+    animation-duration: 6s !important;
+    animation-iteration-count: infinite !important;
+  }
+  @keyframes floatUpDown {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Scroll Down Arrow */
+  .scroll-down {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: #fff;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+  }
+
+  /* Card hover effects */
+  .card:hover {
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+  }
+
+  /* Button hover */
+  .btn-primary:hover {
+    background-color: #0056b3;
+    transition: background-color 0.3s ease;
+  }
+  .btn-outline-primary:hover {
+    color: white;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    transition: all 0.3s ease;
+  }
+
+  /* Testimonial fade-in (handled by animate.css on blockquote) */
+</style>
+
+<!-- Hero Section -->
+<section class="bg-primary text-white text-center py-5 position-relative overflow-hidden">
+  <div class="container">
+    <h1 class="display-4 fw-bold animate__animated animate__fadeInDown animate__slow">Welcome to Thinkodex</h1>
+    <p class="lead mb-4 animate__animated animate__fadeInUp animate__delay-1s">Think. Learn. Code Your Future</p>
+    <p class="fs-5 animate__animated animate__fadeInUp animate__delay-2s">Launching soon! Join us and shape your future in technology.</p>
+    <a href="{% url 'courses:courses' %}" class="btn btn-light btn-lg mt-3 animate__animated animate__fadeInUp animate__delay-3s">Explore Courses</a>
+  </div>
+
+  <div class="scroll-down">
+    <i class="bi bi-chevron-double-down"></i>
+  </div>
+</section>
+
+<!-- Stats Section -->
+<section class="py-5 bg-light" data-aos="fade-up">
+  <div class="container text-center">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <h3 class="counter" data-target="1500">0</h3>
+        <p>Students Enrolled</p>
+      </div>
+      <div class="col-md-4">
+        <h3 class="counter" data-target="50">0</h3>
+        <p>Expert Instructors</p>
+      </div>
+      <div class="col-md-4">
+        <h3 class="counter" data-target="100">0</h3>
+        <p>Projects Completed</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section class="py-5" data-aos="fade-up" data-aos-delay="100">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <img src="{% static 'images/institute_building.png' %}" alt="Thinkodex" class="img-fluid rounded shadow">
+      </div>
+      <div class="col-md-6">
+        <h2>About Thinkodex</h2>
+        <p>
+          Thinkodex is a premier institute committed to empowering learners with the latest knowledge and skills in Artificial Intelligence, Data Science, and Full Stack Development.
+          Our mission is to provide industry-aligned, hands-on training that prepares you for a successful tech career.
+        </p>
+        <p>
+          With expert trainers, practical projects, and career support, we ensure you become job-ready and confident in your domain.
+        </p>
+        <a href="{% url 'home:about' %}" class="btn btn-primary">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Facilities / Highlights -->
+<section class="bg-light py-5" data-aos="fade-up" data-aos-delay="150">
+  <div class="container">
+    <h2 class="text-center mb-5">Why Choose Us?</h2>
+    <div class="row text-center g-4">
+
+      <div class="col-md-4">
+        <i class="bi bi-laptop fs-1 text-primary mb-3"></i>
+        <h5>State-of-the-Art Labs</h5>
+        <p>Access cutting-edge tools and infrastructure to practice real-world projects effectively.</p>
+      </div>
+
+      <div class="col-md-4">
+        <i class="bi bi-people-fill fs-1 text-primary mb-3"></i>
+        <h5>Industry Expert Trainers</h5>
+        <p>Learn from professionals with extensive experience and passion for teaching.</p>
+      </div>
+
+      <div class="col-md-4">
+        <i class="bi bi-award fs-1 text-primary mb-3"></i>
+        <h5>Certifications & Career Support</h5>
+        <p>Get globally recognized certificates and dedicated placement assistance to jumpstart your career.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Featured Instructors -->
+<section class="py-5" data-aos="fade-up" data-aos-delay="200">
+  <div class="container">
+    <h2 class="text-center mb-4">Meet Our Instructors</h2>
+    <div class="row g-4 justify-content-center">
+
+      <div class="col-md-3 text-center">
+        <img src="{% static 'images/instructor1.jpg' %}" class="rounded-circle mb-3 shadow" alt="Instructor 1" width="150" height="150">
+        <h5>Mr. Ajit Rawat</h5>
+        <p class="text-muted">AI & Machine Learning Specialist</p>
+      </div>
+
+      <div class="col-md-3 text-center">
+        <img src="{% static 'images/instructor2.jpg' %}" class="rounded-circle mb-3 shadow" alt="Instructor 2" width="150" height="150">
+        <h5>Mr. Ravi Singh</h5>
+        <p class="text-muted">Full Stack Developer & Mentor</p>
+      </div>
+
+      <div class="col-md-3 text-center">
+        <img src="{% static 'images/instructor3.jpg' %}" class="rounded-circle mb-3 shadow" alt="Instructor 3" width="150" height="150">
+        <h5>Ms. Anjali Verma</h5>
+        <p class="text-muted">Data Scientist & Researcher</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Courses Preview -->
+<section class="bg-light py-5" data-aos="fade-up" data-aos-delay="250">
+  <div class="container">
+    <h2 class="text-center mb-4">Popular Courses</h2>
+    <div class="row g-4">
+
+      <!-- AI Data Science -->
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <img src="{% static 'images/ai_data_science.png' %}" class="card-img-top" alt="AI Data Science">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">AI Data Science Complete Program</h5>
+            <p class="card-text flex-grow-1">Master AI fundamentals, data analytics, machine learning & deep learning.</p>
+            <p class="fw-bold">Price: ₹8,999</p>
+            <a href="{% url 'courses:courses' %}" class="btn btn-primary mt-auto">Enroll Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Python Programming -->
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <img src="{% static 'images/python_programming.png' %}" class="card-img-top" alt="Python Programming">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Python Programming</h5>
+            <p class="card-text flex-grow-1">Beginner to advanced Python programming with hands-on projects.</p>
+            <p class="fw-bold">Price: ₹4,999</p>
+            <a href="{% url 'courses:courses' %}" class="btn btn-primary mt-auto">Enroll Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Full Stack Development -->
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <img src="{% static "images/fullstack_development.png" %}" class="card-img-top" alt="Full Stack Development">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Full Stack Development</h5>
+            <p class="card-text flex-grow-1">Learn front-end & back-end development using modern technologies.</p>
+            <p class="fw-bold">Price: ₹9,999</p>
+            <a href="{% url 'courses:courses' %}" class="btn btn-primary mt-auto">Enroll Now</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Latest News -->
+<section class="py-5" data-aos="fade-up" data-aos-delay="300">
+  <div class="container">
+    <h2 class="text-center mb-4">Latest News</h2>
+    <div class="row g-4">
+
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <img src="{% static 'images/news1.png' %}" class="card-img-top" alt="News 1">
+          <div class="card-body">
+            <h5 class="card-title">Thinkodex Launch Event</h5>
+            <p class="card-text">Join us for the grand opening ceremony and meet our expert trainers.</p>
+            <a href="{% url 'events:news_detail' 1 %}" class="btn btn-outline-primary btn-sm">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <img src="{% static 'images/ds_workshop.jpg' %}" class="card-img-top" alt="News 2">
+          <div class="card-body">
+            <h5 class="card-title">New AI Workshop</h5>
+            <p class="card-text">Enroll in our intensive AI workshop and learn the latest techniques.</p>
+            <a href="{% url 'events:news_detail' 2 %}" class="btn btn-outline-primary btn-sm">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <img src="{% static 'images/news3.jpg' %}" class="card-img-top" alt="News 3">
+          <div class="card-body">
+            <h5 class="card-title">Student Success Stories</h5>
+            <p class="card-text">Read inspiring stories from our alumni now working at top tech firms.</p>
+            <a href="{% url 'events:news_detail' 3 %}" class="btn btn-outline-primary btn-sm">Read More</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Upcoming Events -->
+<section class="bg-light py-5" data-aos="fade-up" data-aos-delay="350">
+  <div class="container">
+    <h2 class="text-center mb-4">Upcoming Events</h2>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <strong>June 15, 2025</strong> — AI Bootcamp Kickoff: Launch your AI learning journey with hands-on training and expert guidance.
+      </li>
+      <li class="list-group-item">
+        <strong>July 1, 2025</strong> — Full Stack Development Workshop: Comprehensive workshop covering front-end and back-end development skills.
+      </li>
+      <li class="list-group-item">
+        <strong>August 10, 2025</strong> — Data Science Webinar: Explore advanced data science concepts and practical applications.
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- Testimonials Carousel -->
+<section class="py-5" data-aos="fade-up" data-aos-delay="400">
+  <div class="container">
+    <h2 class="text-center mb-4">What Our Students Say</h2>
+    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+
+        <div class="carousel-item active text-center">
+          <blockquote class="blockquote animate__animated animate__fadeIn">
+            <p class="mb-4">“Thinkodex transformed my career with hands-on AI projects and expert guidance.”</p>
+            <footer class="blockquote-footer">Ritika Sharma</footer>
+          </blockquote>
+        </div>
+
+        <div class="carousel-item text-center">
+          <blockquote class="blockquote animate__animated animate__fadeIn">
+            <p class="mb-4">“The instructors are knowledgeable and supportive, making learning enjoyable.”</p>
+            <footer class="blockquote-footer">Amit Verma</footer>
+          </blockquote>
+        </div>
+
+        <div class="carousel-item text-center">
+          <blockquote class="blockquote animate__animated animate__fadeIn">
+            <p class="mb-4">“Excellent curriculum and placement assistance helped me get my dream job.”</p>
+            <footer class="blockquote-footer">Sneha Kulkarni</footer>
+          </blockquote>
+        </div>
+
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Admissions Call To Action -->
+<section class="py-5 text-white text-center" style="background-color:#0d6efd;" data-aos="fade-up" data-aos-delay="450">
+  <div class="container">
+    <h2 class="mb-3">Ready to Start Your Journey?</h2>
+    <p class="mb-4">Apply now and take the first step toward an exciting career in tech with Thinkodex.</p>
+    <a href="{% url 'home:apply' %}" class="btn btn-light btn-lg">Apply Now</a>
+  </div>
+</section>
+
+
+<!-- Chatbot UI -->
+<style>
+    #chat-icon {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #007bff;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    #chatbox {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        width: 350px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        display: none;
+        flex-direction: column;
+        z-index: 9999;
+    }
+
+    .chat-header {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 15px;
+        font-weight: bold;
+    }
+
+    #chatlog {
+        padding: 15px;
+        height: 300px;
+        overflow-y: auto;
+        background: #f9f9f9;
+        font-size: 14px;
+    }
+
+    .chat-message {
+        margin-bottom: 10px;
+    }
+
+    .chat-message.user {
+        text-align: right;
+        color: #007bff;
+    }
+
+    .chat-message.bot {
+        text-align: left;
+        color: #333;
+    }
+
+    #userInput {
+        border: none;
+        border-top: 1px solid #ccc;
+        padding: 10px;
+        width: 100%;
+        box-sizing: border-box;
+        outline: none;
+    }
+
+    .suggestion-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-top: 10px;
+    }
+
+    .suggestion-buttons button {
+        background-color: #e9f2ff;
+        border: 1px solid #007bff;
+        color: #007bff;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        cursor: pointer;
+    }
+</style>
+
+<div id="chat-icon" onclick="toggleChat()">💬</div>
+
+<div id="chatbox">
+    <div class="chat-header">Ask Thinkodex 🤖</div>
+    <div id="chatlog"></div>
+    <input type="text" id="userInput" placeholder="Type your question..." onkeydown="if(event.key==='Enter') sendMessage()" />
+</div>
+
+<!-- Chatbot UI -->
+<style>
+    #chat-icon {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #007bff;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 28px;
+        cursor: pointer;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    #chatbox {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        width: 350px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        display: none;
+        flex-direction: column;
+        z-index: 9999;
+        font-family: Arial, sans-serif;
+    }
+
+    .chat-header {
+        background-color: #007bff;
+        color: white;
+        padding: 12px 15px;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    #chatlog {
+        padding: 15px;
+        height: 320px;
+        overflow-y: auto;
+        background: #f9f9f9;
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .chat-message {
+        margin-bottom: 12px;
+        max-width: 85%;
+        word-wrap: break-word;
+        padding: 8px 12px;
+        border-radius: 12px;
+        clear: both;
+    }
+
+    .chat-message.user {
+        background-color: #d9eaff;
+        text-align: right;
+        float: right;
+        color: #007bff;
+    }
+
+    .chat-message.bot {
+        background-color: #eaeaea;
+        text-align: left;
+        float: left;
+        color: #333;
+    }
+
+    #userInput {
+        border: none;
+        border-top: 1px solid #ccc;
+        padding: 12px 15px;
+        width: 100%;
+        box-sizing: border-box;
+        outline: none;
+        font-size: 14px;
+    }
+
+    .suggestion-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 10px;
+        justify-content: flex-start;
+    }
+
+    .suggestion-buttons button {
+        background-color: #e9f2ff;
+        border: 1px solid #007bff;
+        color: #007bff;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 13px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .suggestion-buttons button:hover {
+        background-color: #c7dfff;
+    }
+</style>
+
+<div id="chat-icon" onclick="toggleChat()" title="Chat with Thinkodex 🤖">💬</div>
+
+<div id="chatbox" role="dialog" aria-labelledby="chat-header" aria-modal="true">
+    <div class="chat-header" id="chat-header">Ask Thinkodex 🤖</div>
+    <div id="chatlog" aria-live="polite" aria-atomic="false"></div>
+    <input type="text" id="userInput" placeholder="Type your question..." aria-label="Type your question" />
+</div>
+
+<script>
+    let initialSuggestionsShown = false;
+
+    const initialSuggestions = [
+        "Courses available",
+        "Fees details",
+        "Class timings",
+        "Location of campus",
+        "Admission process",
+        "Do you offer certificates?",
+        "Placement support",
+        "Upcoming workshops",
+        "Student success stories",
+        "How to register?",
+        "Trainer info",
+    ];
+
+    function toggleChat() {
+        const chatbox = document.getElementById("chatbox");
+        if (chatbox.style.display === "none" || chatbox.style.display === "") {
+            chatbox.style.display = "flex";
+            if (!initialSuggestionsShown) {
+                showInitialSuggestions();
+                initialSuggestionsShown = true;
+            }
+            document.getElementById("userInput").focus();
+        } else {
+            chatbox.style.display = "none";
+        }
+    }
+
+    function showInitialSuggestions() {
+        const chatlog = document.getElementById("chatlog");
+        chatlog.innerHTML = `<div class="chat-message bot" role="alert">Hi there! 👋 What do you want to know about Thinkodex?<div class="suggestion-buttons">${
+            initialSuggestions.map(s => `<button onclick="sendSuggestion('${s}')">${escapeHtml(s)}</button>`).join("")
+        }</div></div>`;
+        scrollChatToBottom();
+    }
+
+    function sendSuggestion(text) {
+        const userInput = document.getElementById("userInput");
+        userInput.value = text;
+        sendMessage();
+    }
+
+    function sendMessage() {
+        const userInput = document.getElementById("userInput");
+        const message = userInput.value.trim();
+        if (!message) return;
+
+        const chatlog = document.getElementById("chatlog");
+        chatlog.innerHTML += `<div class="chat-message user" role="log">${escapeHtml(message)}</div>`;
+        scrollChatToBottom();
+
+        userInput.value = "";
+        userInput.disabled = true;
+
+        fetch(`/bot/ask/?message=${encodeURIComponent(message)}`)
+            .then(response => response.json())
+            .then(data => {
+                chatlog.innerHTML += `<div class="chat-message bot" role="alert">${escapeHtml(data.response)}</div>`;
+
+                if (data.suggestions && data.suggestions.length > 0) {
+                    chatlog.innerHTML += `<div class="chat-message bot" role="alert"><strong>Related Questions:</strong><div class="suggestion-buttons">${
+                        data.suggestions.map(r => `<button onclick="sendSuggestion('${escapeHtml(r)}')">${escapeHtml(r)}</button>`).join("")
+                    }</div></div>`;
+                }
+
+                scrollChatToBottom();
+            })
+            .catch(() => {
+                chatlog.innerHTML += `<div class="chat-message bot" role="alert">Oops! Something went wrong. Please try again later.</div>`;
+                scrollChatToBottom();
+            })
+            .finally(() => {
+                userInput.disabled = false;
+                userInput.focus();
+            });
+    }
+
+    function scrollChatToBottom() {
+        const chatlog = document.getElementById("chatlog");
+        chatlog.scrollTop = chatlog.scrollHeight;
+    }
+
+    // Escape HTML to prevent XSS
+    function escapeHtml(text) {
+        return text.replace(/[&<>"']/g, function(m) {
+            return ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            })[m];
+        });
+    }
+
+    // Send message on Enter key press
+    document.getElementById("userInput").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            sendMessage();
+            event.preventDefault();
+        }
+    });
+</script>
+
+
+
+
+
+<!-- FAQ Section -->
+  <section id="faq" class="my-5">
+    <h2 class="mb-3">Frequently Asked Questions</h2>
+
+    <div class="accordion" id="faqAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+            aria-expanded="true" aria-controls="collapseOne">
+            What courses do you offer?
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            We offer a wide range of courses including AI, Full Stack Development, Data Science, and more.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+            aria-expanded="false" aria-controls="collapseTwo">
+            How can I apply for admissions?
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            You can apply online through our Admissions page or contact our support team for guidance.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
+            aria-expanded="false" aria-controls="collapseThree">
+            Do you provide certification after course completion?
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Yes, all our courses come with a certification upon successful completion.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<!-- Counter Animation Script -->
+<script>
+  const counters = document.querySelectorAll('.counter');
+  counters.forEach(counter => {
+    const updateCount = () => {
+      const target = +counter.getAttribute('data-target');
+      const count = +counter.innerText;
+      const speed = 50; // lower = faster
+      const increment = Math.ceil(target / speed);
+      
+      if(count < target) {
+        counter.innerText = count + increment;
+        setTimeout(updateCount, 20);
+      } else {
+        counter.innerText = target;
+      }
+    };
+    updateCount();
+  });
+</script>
+
+{% endblock %}

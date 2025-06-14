@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+  .admissions-hero {
+    background: url('/static/images/admissions-bg.jpg') no-repeat center center;
+    background-size: cover;
+    color: #fff;
+    padding: 100px 0;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+  }
+  .admissions-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 40px;
+    max-width: 600px;
+    margin: -80px auto 0 auto;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+  .btn-primary {
+    background-color: #007bff;
+    border: none;
+    font-weight: 600;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+  }
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+</style>
+
+<section class="admissions-hero text-center">
+  <div class="container">
+    <h1 class="display-4 fw-bold">Admissions Open</h1>
+    <p class="lead mb-4">Join the next batch at NeuroVertex Academy and boost your career with top-notch AI and software development training!</p>
+  </div>
+</section>
+
+<section class="admissions-card text-center">
+  <h2 class="mb-3">Apply Now</h2>
+  <p class="mb-4">Fill out the application form or reach out to us to learn more about the course schedule, fees, and scholarships.</p>
+  <a href="{% url 'contact' %}" class="btn btn-primary">Contact Us</a>
+</section>
+{% endblock %}

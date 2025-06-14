@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }} - Thinkodex Institute{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+  <div class="card border-0 shadow-sm p-4">
+    
+    <h1 class="text-primary mb-3">{{ post.title }}</h1>
+
+    <div class="d-flex justify-content-between text-muted mb-3">
+      <small>
+        🗓 Published on {{ post.published_date|date:"F j, Y" }}
+        {% if post.author %} | ✍️ by {{ post.author }}{% endif %}
+      </small>
+    </div>
+
+    {% if post.image %}
+      <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid rounded mb-4">
+    {% endif %}
+
+    <p class="fs-5 lh-lg">{{ post.summary }}</p>
+  </div>
+</div>
+{% endblock %}

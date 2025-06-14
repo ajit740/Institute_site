@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ news.title }}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <style>
+        html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f8f9fa;
+}
+
+body {
+    padding: 3rem 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 720px;
+    width: 100%;
+    padding: 0 1rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card {
+    border-radius: 0.5rem;
+    box-shadow: 0 0.75rem 1.5rem rgba(18,38,63,.03);
+    border: none;
+}
+
+.hero-image {
+    position: relative;
+    height: 350px;
+    overflow: hidden;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    font-weight: 700;
+    font-size: 2.5rem;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.content-text {
+    white-space: pre-line;
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin-top: 1.5rem;
+    color: #333;
+}
+
+.btn-back {
+    margin-top: 2rem;
+    font-weight: 600;
+}
+
+        
+    </style>
+</head>
+<body>
+  
+    <div class="container py-5">
+        <div class="card mx-auto" style="max-width: 720px;">
+            <div class="hero-image">
+                <img src="{% static news.image %}" alt="{{ news.title }}" />
+                <div class="hero-text">{{ news.title }}</div>
+            </div>
+            <div class="card-body">
+                <div class="content-text">
+                    {{ news.content }}
+                </div>
+                <a href="{% url 'home:index' %}" class="btn btn-outline-secondary btn-back">
+                    &larr; Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
